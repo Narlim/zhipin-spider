@@ -56,7 +56,8 @@ class BossspiderSpider(scrapy.Spider):
                 'job_area': job.xpath(".//span[@class='job-area']/text()").get(),
                 'company': job.xpath(".//div[@class='company-text']/h3/a/text()").get(),
                 'salary': job.xpath(".//span[@class='red']/text()").get(),
-                'required': job.xpath(".//div[@class='job-limit clearfix']/p/text()").get().replace('\n', ' ')
+                'required': job.xpath(".//div[@class='job-limit clearfix']/p/text()").get().replace('\n', ' '),
+                'tags': job.xpath(".//div[@class='tags']/span[@class='tag-item']/text()").getall()
             }
 
         next_page = response.xpath("//a[@class='next']/@href").get()
